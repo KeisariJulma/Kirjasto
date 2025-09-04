@@ -50,15 +50,7 @@ class Kirjasto
 
                 break;
             case 4:
-                Console.WriteLine("Etsi kirjat genren mukaan");
-                Console.WriteLine("Anna genre:");
-                string genre = Console.ReadLine();
-                var genreKirjat = kirjat.Where(k => k.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).ToList();
-                foreach (var kirja in genreKirjat)
-                {
-                    Console.WriteLine(kirja);
-                }
-
+                EtsiGenrella();
                 break;
             case 5:
                 EtsiKirjaNimellaTaiKirjoittajalla();
@@ -124,6 +116,18 @@ class Kirjasto
             k.Nimi.Contains(hakusana, StringComparison.OrdinalIgnoreCase) ||
             k.Kirjoittaja.Contains(hakusana, StringComparison.OrdinalIgnoreCase)).ToList();
         foreach (var kirja in hakutulokset)
+        {
+            Console.WriteLine(kirja);
+        }
+    }
+    
+    static void EtsiGenrella()
+    {
+        Console.WriteLine("Etsi kirjat genren mukaan");
+        Console.WriteLine("Anna genre:");
+        string genre = Console.ReadLine();
+        var genreKirjat = kirjat.Where(k => k.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).ToList();
+        foreach (var kirja in genreKirjat)
         {
             Console.WriteLine(kirja);
         }
